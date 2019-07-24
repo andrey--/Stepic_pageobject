@@ -1,0 +1,24 @@
+.idea/
+.vscode/
+.tmp/
+test-results.xml
+test-results/
+automated_tests/test_results
+automated_tests/ui_tests/test_results
+automated-tests/clear_python_cache.sh
+
+### Python template
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# virtualenv
+venv/
+ENV/
+
+#
+logs/
+tests_log.txt
+.pytest_cache/
+
