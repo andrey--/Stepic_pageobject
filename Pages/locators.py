@@ -23,4 +23,3 @@ class ProductPageLocators(object):
     BASKET_TOTAL = (By.XPATH, "//p[contains(text(),'Your basket total is now')]")
     PRICE = (By.CSS_SELECTOR, "div.col-sm-6.product_main p.price_color")
     ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, "button.btn.btn-lg.btn-primary.btn-add-to-basket")
-# /following-sibling::text()[1]
