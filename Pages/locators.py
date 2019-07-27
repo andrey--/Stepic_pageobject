@@ -15,3 +15,12 @@ class LoginPageLocators(object):
     REGISTRATION_PASSWORD1 = (By.CSS_SELECTOR, "input#id_registration-password1")
     REGISTRATION_PASSWORD2 = (By.CSS_SELECTOR, "input#id_registration-password1")
     REGISTRATION_BUTTON = (By.CSS_SELECTOR, "button.btn.btn-lg.btn-primary[name='registration_submit']")
+
+
+class ProductPageLocators(object):
+    NAME = (By.CSS_SELECTOR, 'div.col-sm-6.product_main h1')
+    ADDED_TO_BASKET = (By.XPATH, '//div[@class="alertinner " and strong/following-sibling::text()]')
+    BASKET_TOTAL = (By.XPATH, "//p[contains(text(),'Your basket total is now')]")
+    PRICE = (By.CSS_SELECTOR, "div.col-sm-6.product_main p.price_color")
+    ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, "button.btn.btn-lg.btn-primary.btn-add-to-basket")
+# /following-sibling::text()[1]
