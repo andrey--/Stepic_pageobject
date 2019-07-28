@@ -11,11 +11,6 @@ class ProductPage(BasePage):
         self.item_price = "Your basket total is now "
         self.item_name = " has been added to your basket."
 
-    def press_add_to_basket(self):
-        # link = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
-        link = self.browser.find_element(By.XPATH, "//button[contains(text(),'basket')]")
-        link.click()
-
     def item_should_be_in_basket(self):
         assert "has been added to your basket." in self.browser.find_element(
             *ProductPageLocators.ADDED_TO_BASKET).text, "Item was not added to basket "
@@ -26,8 +21,18 @@ class ProductPage(BasePage):
         assert self.item_price == found, f"Wrong basket total. Should be '{self.item_price}' " \
                                          f"but '{found}' was found"
 
-    def solve_quiz(self):
-        self.solve_quiz_and_get_code()
+    def press_add_to_basket(self):
+        # link = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
+        link = self.browser.find_element(By.XPATH, "//button[contains(text(),'basket')]")
+        link.click()
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def success_message_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message does not disappeared, but should"
 
     def should_be_add_to_basket_button(self):
         assert self.is_element_present(*ProductPageLocators.ADD_TO_BASKET_BUTTON), "Add to basket button is not " \
@@ -40,3 +45,6 @@ class ProductPage(BasePage):
     def should_be_item_name_on_the_page(self):
         assert self.is_element_present(*ProductPageLocators.NAME), "Item name is not presented"
         self.item_name = self.browser.find_element(*ProductPageLocators.NAME).text + self.item_name
+
+    def solve_quiz(self):
+        self.solve_quiz_and_get_code()
