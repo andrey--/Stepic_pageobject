@@ -1,5 +1,6 @@
 import pytest
 
+from Pages.basket_page import BasketPage
 from Pages.login_page import LoginPage
 from Pages.product_page import ProductPage
 
@@ -27,6 +28,15 @@ class TestProductPage:
         page.solve_quiz()
         page.item_should_be_in_basket()
 
+    def test_guest_can_go_to_login_page_from_product_page(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+        page = ProductPage(browser, link)
+        page.open()
+        page.should_be_login_link()
+        page.go_to_login_page()
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.should_be_login_page()
+
     def test_guest_cant_see_success_message(self, browser):
         link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = ProductPage(browser, link)
@@ -36,17 +46,21 @@ class TestProductPage:
         page.should_be_price_on_the_page()
         page.should_not_be_success_message()
 
+    def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+        page = ProductPage(browser, link)
+        page.open()
+        page.should_be_basket_link()
+        page.go_to_basket()
+        basket_page = BasketPage(browser, browser.current_url)
+        basket_page.should_be_basket_page()
+        basket_page.should_be_empty_basket()
+        basket_page.should_not_be_goods_in_empty_basket()
+
+
     def test_guest_should_see_login_link_on_product_page(self, browser):
         link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = ProductPage(browser, link)
         page.open()
         page.should_be_login_link()
 
-    def test_guest_can_go_to_login_page_from_product_page(self, browser):
-        link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
-        page = ProductPage(browser, link)
-        page.open()
-        page.should_be_login_link()
-        page.go_to_login_page()
-        login_page = LoginPage(browser, browser.current_url)
-        login_page.should_be_login_page()
