@@ -7,6 +7,7 @@ class BasePageLocators:
     VIEW_BASKET_BUTTON = (By.CSS_SELECTOR, "span.btn-group a.btn.btn-default")
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
+
 class BasketPageLocators:
     BASKET_TEXT = (By.CSS_SELECTOR, "div#content_inner p")
     BASKET_TITLE = (By.XPATH, "//div[@class='page-header action']/h1[contains(text(),'Basket')]")
