@@ -1,7 +1,7 @@
 import pytest
 
-from Pages.basket_page import BasketPage
-from Pages.main_page import MainPage
+from pages.basket_page import BasketPage
+from pages.main_page import MainPage
 
 
 @pytest.mark.login_guest

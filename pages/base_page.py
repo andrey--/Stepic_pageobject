@@ -5,7 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-# from Pages.login_page import LoginPage
+# from pages.login_page import LoginPage
 from .locators import BasePageLocators
 
 
